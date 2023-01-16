@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/blogapp/static/css/main.c4978e29.css",
-    "main.js": "/blogapp/static/js/main.967258b6.js",
-    "static/js/787.69c8430f.chunk.js": "/blogapp/static/js/787.69c8430f.chunk.js",
-    "static/media/logo.svg": "/blogapp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/blogapp/index.html",
-    "main.c4978e29.css.map": "/blogapp/static/css/main.c4978e29.css.map",
-    "main.967258b6.js.map": "/blogapp/static/js/main.967258b6.js.map",
-    "787.69c8430f.chunk.js.map": "/blogapp/static/js/787.69c8430f.chunk.js.map"
+    "main.css": "https://codekeep18feb.github.io/blogapp/static/css/main.c4978e29.css",
+    "main.js": "https://codekeep18feb.github.io/blogapp/static/js/main.2125b819.js",
+    "static/js/787.69c8430f.chunk.js": "https://codekeep18feb.github.io/blogapp/static/js/787.69c8430f.chunk.js",
+    "static/media/logo.svg": "https://codekeep18feb.github.io/blogapp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "https://codekeep18feb.github.io/blogapp/index.html",
+    "main.c4978e29.css.map": "https://codekeep18feb.github.io/blogapp/static/css/main.c4978e29.css.map",
+    "main.2125b819.js.map": "https://codekeep18feb.github.io/blogapp/static/js/main.2125b819.js.map",
+    "787.69c8430f.chunk.js.map": "https://codekeep18feb.github.io/blogapp/static/js/787.69c8430f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c4978e29.css",
-    "static/js/main.967258b6.js"
+    "static/js/main.2125b819.js"
   ]
 }
