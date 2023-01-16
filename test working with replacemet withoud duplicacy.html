@@ -1,0 +1,52 @@
+<!-- <div id="parentElement">
+    <span id="childElement">foo bar</span>
+  </div>
+  
+   -->
+
+<p>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+  voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+  kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</p>
+
+<script>
+  function insertBreakAtPoint(e) {
+    let range;
+    let textNode;
+    let offset;
+    const selected = document.getSelection()
+    if (document.caretPositionFromPoint) {
+      range = document.caretPositionFromPoint(e.clientX, e.clientY);
+      textNode = range.offsetNode;
+      offset = range.offset;
+    } else if (document.caretRangeFromPoint) {
+        console.log('atthispoint',e.clientX, e.clientY)
+      // Use WebKit-proprietary fallback method
+      range = document.caretRangeFromPoint(e.clientX, e.clientY);
+      textNode = range.startContainer;
+      offset = range.startOffset;
+    } else {
+      // Neither method is supported, do nothing
+      return;
+    }
+    // Only split TEXT_NODEs
+    if (textNode?.nodeType === 3) {
+        console.log('what is the  offset :)',offset,selected.toString().length)
+      let replacement = textNode.splitText(offset);
+    //   let replacement2 = replacement.splitText(selected.toString().length);
+    //   console.log('replacement',replacement2)
+      let h1 = document.createElement("h1");
+      h1.textContent = selected.toString()
+      textNode.parentNode.insertBefore(h1, replacement);
+      console.log('textNode.textContent',textNode.textContent.length,typeof textNode.textContent,textNode.textContent.length-selected.toString().length)
+      textNode.textContent = textNode.textContent.slice(0,textNode.textContent.length-selected.toString().length)
+    }
+  }
+
+  let paragraphs = document.getElementsByTagName("p");
+  for (const paragraph of paragraphs) {
+    paragraph.addEventListener("click", insertBreakAtPoint, false);
+  }
+</script>

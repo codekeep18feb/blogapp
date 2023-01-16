@@ -1,0 +1,117 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function breakAllSelectedNodesCorrectly() {
+        const selected = document.getSelection();
+        const s_str = selected.toString();
+
+        if (selected && selected.anchorNode) {
+          const docs = document.getElementById("parant");
+          const r = selected.getRangeAt(0);
+          const first_s = selected.anchorNode.textContent.slice(
+            0,
+            selected.anchorOffset
+          );
+          const last_s = selected.focusNode.textContent.slice(
+            selected.focusOffset
+          );
+
+          const cover_div = document.createElement("div");
+          const first_elm = document.createElement("h1");
+          first_elm.textContent = first_s;
+
+          const middle_elm = document.createElement("h2");
+          middle_elm.textContent = s_str ? s_str : ".";
+
+          const last_elm = document.createElement("h1");
+          last_elm.textContent = last_s;
+
+          let nodes_list = [];
+
+          if (selected.isCollapsed) {
+            const rangedChilds = document.getElementById("parant");
+            if (selected.anchorNode.parentNode.nextElementSibling) {
+              const childAtEnd =
+                selected.anchorNode.parentNode.nextElementSibling;
+              rangedChilds.insertBefore(first_elm, childAtEnd);
+              rangedChilds.insertBefore(middle_elm, childAtEnd);
+              rangedChilds.insertBefore(last_elm, childAtEnd);
+            } else {
+              rangedChilds.appendChild(first_elm, childAtEnd);
+              rangedChilds.appendChild(middle_elm, childAtEnd);
+              rangedChilds.appendChild(last_elm, childAtEnd);
+            }
+
+            first_elm.previousElementSibling.remove();
+          } else {
+            let start = false;
+            let end = false;
+            const rangedChilds = r.commonAncestorContainer;
+            const all_childs = r.commonAncestorContainer.children;
+            let start_ind = null;
+            let end_ind = null;
+            debugger;
+            for (let j = 0; j < all_childs.length; j++) {
+              const child = all_childs[j];
+              if (child == selected.anchorNode.parentNode) {
+                start_ind = j;
+
+                continue;
+              } else if (child == selected.focusNode.parentNode) {
+                end_ind = j;
+                break;
+              }
+            }
+
+            remove_childs = [];
+            let childAtEnd = false;
+            for (let i = start_ind; i <= end_ind; i++) {
+              let child = all_childs[i];
+
+              remove_childs.push(child);
+              if (i == end_ind && end_ind + 1 < all_childs.length) {
+                childAtEnd = all_childs[end_ind + 1];
+              }
+            }
+
+            for (const c of remove_childs) {
+              c.remove();
+            }
+            if (childAtEnd) {
+              rangedChilds.insertBefore(first_elm, childAtEnd);
+              rangedChilds.insertBefore(middle_elm, childAtEnd);
+              rangedChilds.insertBefore(last_elm, childAtEnd);
+            } else {
+              rangedChilds.appendChild(first_elm, childAtEnd);
+              rangedChilds.appendChild(middle_elm, childAtEnd);
+              rangedChilds.appendChild(last_elm, childAtEnd);
+            }
+          }
+          selected.setPosition(middle_elm, 1);
+
+          let n = 0;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div
+      id="parant"
+      contenteditable="true"
+      onclick="breakAllSelectedNodesCorrectly()"
+    >
+      <h1>111111</h1>
+      <h1>222222</h1>
+      <h1>333333</h1>
+      <h1>444444</h1>
+      <h1>555555</h1>
+      <h1>666666</h1>
+    </div>
+    <!-- <button onclick="breakAllSelectedNodesCorrectly()">click</button> -->
+  </body>
+</html>
