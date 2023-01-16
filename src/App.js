@@ -28,7 +28,9 @@ import CreateContentComp from "./components/CreateContentComp";
 
 function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+
     
     <Routes>
 
