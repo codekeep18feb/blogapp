@@ -5,7 +5,8 @@ import {
   Routes,  
   Route,  
   Link,  
-  BrowserRouter
+  BrowserRouter,
+  HashRouter
 }   
 from 'react-router-dom'; 
 import Home from "./components/Home";
@@ -29,8 +30,9 @@ import CreateContentComp from "./components/CreateContentComp";
 function App() {
   return (
     // <BrowserRouter>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-
+    // <BrowserRouter basename={process.env.PUBLIC_URL}>
+<HashRouter base="/">
+  
     
     <Routes>
 
@@ -52,7 +54,8 @@ function App() {
     {/* <Route exact path='/test_rich_detail' element={< TestRichEditorDetail htmlData={}/>}></Route>   */}
     {/* <Route exact path='/contact' element={< Contact />}></Route>   */}
     </Routes>
-    </BrowserRouter>
+    </HashRouter>
+
 
   );
 }
